@@ -26,6 +26,11 @@ if __name__ == "__main__":
 
         #TODO: colocar validação de entrada
         op = int(input("Escolha uma opção: "))
+        if op < 0 or op > 4:
+            print("Opção inválida. Tente novamente.")
+        elif op != int:
+            print("Entrada inválida. Por favor, digite um número.")
+
         match op:
             case 1:
                 inserir()
@@ -38,16 +43,16 @@ if __name__ == "__main__":
                 else:
                     print("Jogo não encontrado na lista.")
 
-            case 3: #FIXME: consertar (nao fala q ta vazia quanto ta vazia)
-                if jogos:
+            case 3: 
+                if jogos == True:
                     print("Lista de desejos: ")
                     for jogo in jogos:
                         print(jogo)
                 else:
                     print("A lista de desejos está vazia.")
 
-            case 4: #FIXME: consertar (nao fala q ta vazia quanto ta vazia)
-                if jogos:
+            case 4: 
+                if jogos == True:
                     jogos.clear()
                     print("Lista limpa com sucesso!")
                 else:
