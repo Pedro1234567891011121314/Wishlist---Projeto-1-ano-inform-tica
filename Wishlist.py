@@ -1,65 +1,81 @@
-jogos = [""] #FIXME: (garcia vai cuidar disso dps ent rlx) mesmo q vc insira (ou faça qualquer coisa) um item, ele n realmente insere pq n ta conectado num .json, ent n salva
+nomes = []
+precos = []
+prioridades = []
+comprados = []
 
-def inserir():
-#FIXME: colocar validação de nome
-    jogo = str(input("Digite o nome do jogo: "))
-    jogos.append(jogo)
+def adicionar():
+    # FIXME: colocar validação de nome
+    nome = input("Digite o nome do jogo: ")
+    preco = float(input("Digite o preco do jogo: "))
+    prioridade = (input("Qual a prioridade da compra? [Baixa / Média / Alta]"))
+
+    nomes.append(nome)
+    precos.append(preco)
+    prioridades.append(prioridade)
+    comprados.append(False)
+
+
+def listar():
+    if nomes: 
+        for i in range(len(nomes)):
+            print(f"Nome: {nomes[i]}" + f" - Preço:  {precos[i]}" + f" - Prioridade:  {prioridade[i]}")
+
+
+
+
 def menu():
-    print("Lista de desejos")
     print("=" * 20)
-    print("1. Inserir item")
-    print("2. Remover item")
-    print("3. Ver lista")
+    print("Lista de desejos")
+    print()
+    print("1. Adicionar item")
+    print("2. Ver lista")
+    print("3. Remover item")
     print("4. Limpar lista")
+    print("5. atualizar lista")
     print("0. Sair")
+    print("=" * 20)
 
 
 def main():
     while True:
-        
         menu()
-        break
 
-
-if __name__ == "__main__":
-        main()
-
-        #TODO: colocar validação de entrada
+        # TODO: colocar validação de entrada
         op = int(input("Escolha uma opção: "))
         if op < 0 or op > 4:
             print("Opção inválida. Tente novamente.")
-        elif op != int:
-            print("Entrada inválida. Por favor, digite um número.")
 
         match op:
             case 1:
-                inserir()
+                adicionar()
 
             case 2:
-                jogo = str(input("Digite o nome do jogo a ser removido: "))
-                if jogo in jogos:
-                    jogos.remove(jogo)
-                    print("Jogo removido com sucesso!")
-                else:
-                    print("Jogo não encontrado na lista.")
+              listar()
+                
+            case 3:
+                pass 
 
-            case 3: 
-                if jogos == True:
-                    print("Lista de desejos: ")
-                    for jogo in jogos:
-                        print(jogo)
+            case 4:
+                confirmaçao_4 = input(
+                    "Deseja limpar a lista? (s/n): ").lower() .strip()
+                if confirmaçao_4 == "s":
+                    print("Lista limpa com sucesso!")
                 else:
-                    print("A lista de desejos está vazia.")
+                    print("Limpeza cancelada.")
 
-            case 4: 
-                if jogos == True:
+                if jogos:
                     jogos.clear()
                     print("Lista limpa com sucesso!")
                 else:
                     print("A lista de desejos já está vazia.")
 
             case 0:
-                while True: 
+                while True:
                     print("Saindo...")
                     break
+
+
+if __name__ == "__main__":
+    main()
+
               
